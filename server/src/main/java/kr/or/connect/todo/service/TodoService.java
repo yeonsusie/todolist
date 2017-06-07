@@ -13,15 +13,17 @@ import kr.or.connect.todo.persistence.TodoDao;
 
 @Service
 public class TodoService {
-	private static Logger log = LoggerFactory.getLogger(TodoService.class);
+	private static Logger log = LoggerFactory.getLogger(TodoService.class); // ?????????
+	
+	//Dao와 연결 - spring의 의존성 주입 기능 이용
 	private TodoDao todoDao;
-
 	public TodoService(TodoDao todoDao) {
 		this.todoDao = todoDao;
 	}
 	
 	
-	public boolean addTodo(Todo todo){
+	//기능1... 근데 윤덕오빠코드 이해가 어렵댜;;
+	public boolean addTodo(Todo todo){ 
 		boolean result = false;
 		try {
 			todo.setCompleted(0);

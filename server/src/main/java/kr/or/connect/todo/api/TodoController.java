@@ -8,7 +8,7 @@ import kr.or.connect.todo.service.TodoService;
 
 @RestController
 public class TodoController {
-	private TodoService todoService;
+	private TodoService todoService;  //service 연결 (spring의 DI(의존성주입) 기능)
 
 	public TodoController(TodoService todoService) {
 		this.todoService = todoService;

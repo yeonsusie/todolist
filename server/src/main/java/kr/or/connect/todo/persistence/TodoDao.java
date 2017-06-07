@@ -31,7 +31,9 @@ public class TodoDao {
 		
 	}
 
-	public boolean insertTodo(Todo todo) {
+	//기능1 - 데이터 입력_INSERT
+	
+	public boolean insertTodo(Todo todo) { 
 		
 //		Map<String, Object> param = new HashMap<>();
 //		param.put("id", todo.getId());
