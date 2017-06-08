@@ -9,7 +9,25 @@
 	$('.new-todo').on('keypress', event => {
 		if (event.which === 13) {  //enter가 눌릴때만 함수진행되도록 해준것.
 			//alert(event.currentTarget.value)
+			var eventValue = event.currentTarget.value
 			
+			
+			//빈 문자열 검색 함수
+			var isEmpty = function(value){ 
+				if( value == "" || value == null || value == undefined || ( value != null && typeof value == "object" && !Object.keys(value).length ) )
+				{ 
+					//alert("문자를 입력하시오")
+					return false
+					}
+				else{ 
+						return true
+						} 
+				};
+				
+				
+			var checked = isEmpty(eventValue)
+			if(isEmpty(eventValue) === true){
+				
 			$.ajax({  //데이터를 서버로 넘기는 과정 fe->be
 				  type: "POST",
 				  url: "/api/todos",
@@ -32,7 +50,11 @@
 					  alert("error: " + error.status) 
 				  }
 				});
+			}
+			else
+				alert("다시 입력")
 		}
+		
 		
 	});
 	
