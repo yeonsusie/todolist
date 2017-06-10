@@ -31,9 +31,18 @@ public class TodoDao {
 		
 	}
 
+	
+	
+	
 	//기능1 - 데이터 입력_INSERT
 	
-	public boolean insertTodo(Todo todo) { 
+	public Integer insert(Todo todo){
+		SqlParameterSource params = new BeanPropertySqlParameterSource(todo);
+		return insertAction.executeAndReturnKey(params).intValue();
+		
+	}
+	
+/*	public boolean insertTodo(Todo todo) { 
 		
 //		Map<String, Object> param = new HashMap<>();
 //		param.put("id", todo.getId());
@@ -48,5 +57,5 @@ public class TodoDao {
 
 		return true;
 
-	}
+	}*/
 }

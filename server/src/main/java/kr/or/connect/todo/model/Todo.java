@@ -1,15 +1,15 @@
 package kr.or.connect.todo.model;
 
 public class Todo {
-	private String id;
+	private Integer id;
 	private String todo;
 	private Integer completed;
 	private String date;
 	
-	public String getId() {
+	public Integer getId() {
 		return id;
 	}
-	public void setId(String id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 	public String getText() {
