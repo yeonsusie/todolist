@@ -1,5 +1,7 @@
 package kr.or.connect.todo.service;
 
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
 import kr.or.connect.todo.model.Todo;
@@ -7,23 +9,39 @@ import kr.or.connect.todo.persistence.TodoDao;
 
 @Service
 public class TodoService {
-	//private static Logger log = LoggerFactory.getLogger(TodoService.class); // ?????????
+	private TodoDao dao;
+
+	public TodoService(TodoDao dao) {
+		this.dao = dao;
+	}
+
 	
-	//Dao와 연결 - spring의 의존성 주입 기능 이용
-	private TodoDao todoDao;
 	
-	public TodoService(TodoDao todoDao) {
-		this.todoDao = todoDao;
+	public List<Todo> findAll() {
+		return dao.selectAll();
 	}
 	
-	
-	public Todo addTodo(Todo todo){
-		todo.setId(todoDao.insert(todo));  //왜 이 코드가 들어갔을까..
+	public Todo add(Todo todo) {
+		todo.setId(dao.add(todo));
 		return todo;
 	}
+
+ 	public int updateCompleted(Integer id, Integer completed) {
+ 		return dao.update(id, completed);
+ 	}
+
+	public int deleteById(Integer id) {
+		return dao.deleteById(id);
+ 	}
 	
-	
-/*	//기능1... 윤덕오빠코드
+	public int deleteByCompleted() {
+		return dao.deleteByCompleted();
+ 	}
+}
+
+
+/*
+	//기능1... 윤덕오빠코드
 	public boolean addTodo(Todo todo){ 
 		boolean result = false;
 		try {
@@ -34,7 +52,8 @@ public class TodoService {
 			log.error("insert failure.", e);
 		}
 		return result;
-	}*/
-
+	}
 
 }
+
+*/

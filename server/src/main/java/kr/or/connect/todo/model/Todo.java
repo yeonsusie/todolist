@@ -4,7 +4,24 @@ public class Todo {
 	private Integer id;
 	private String todo;
 	private Integer completed;
-	private String date;
+//	private String date;
+	
+	public Todo(){
+		
+	}
+	
+	public Todo(String todo, Integer completed) {
+		this.todo = todo;
+		this.completed = completed;
+	}
+	
+	public Todo(Integer id, String todo, Integer completed) {
+		super();  //??
+		this.id = id;
+		this.todo = todo;
+		this.completed = completed;
+		
+	}
 	
 	public Integer getId() {
 		return id;
@@ -12,10 +29,10 @@ public class Todo {
 	public void setId(Integer id) {
 		this.id = id;
 	}
-	public String getText() {
+	public String getTodo() {
 		return todo;
 	}
-	public void setText(String todo) {
+	public void setTodo(String todo) {
 		this.todo = todo;
 	}
 	public Integer getCompleted() {
@@ -24,12 +41,12 @@ public class Todo {
 	public void setCompleted(Integer completed) {
 		this.completed = completed;
 	}
-	public String getDate() {
+/*	public String getDate() {
 		return date;
 	}
 	public void setDate(String date) {
 		this.date = date;
 	}
-	
+	*/
 	
 }
