@@ -22,7 +22,7 @@ public class TodoService {
 	}
 	
 	public Todo add(Todo todo) {
-		todo.setId(dao.add(todo));
+		todo.setId(dao.insert(todo));
 		return todo;
 	}
 

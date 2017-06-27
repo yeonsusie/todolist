@@ -1,6 +1,7 @@
 package kr.or.connect.todo.persistence;
 
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -25,10 +26,11 @@ public class TodoDao {
 
 	public TodoDao(DataSource dataSource) {
 		this.jdbc = new NamedParameterJdbcTemplate(dataSource);
+		//인터페이스인 DataSource에만 의존함으로서 DataSource의 구현체라면 어느 클래스가 오던지 동작할 수 있게 되었다
 		this.insertAction = new SimpleJdbcInsert(dataSource)
-				.withTableName("todo")
+				.withTableName("todo") //테이블명을 todo로 지정
 				.usingColumns("todo")
-				.usingGeneratedKeyColumns("id");
+				.usingGeneratedKeyColumns("id"); //자동생성되는 키 컬럼을 id로
 	}
 	
 	public List<Todo> selectAll() {
@@ -36,9 +38,10 @@ public class TodoDao {
 		return jdbc.query(TodoSqls.SELECT_ALL, params, rowMapper);
 	}
 	
-	public Integer add(Todo todo) {
+	public Integer insert(Todo todo) {
 		SqlParameterSource params = new BeanPropertySqlParameterSource(todo);
  		return insertAction.executeAndReturnKey(params).intValue();
+ 		//return타입을 integer로, 생성된 키 값을 반환한다.
 	}
 	
 	public int update(Integer id, Integer completed) {
@@ -57,7 +60,15 @@ public class TodoDao {
  		Map<String, ?> params = Collections.singletonMap("completed", 1);
  		return jdbc.update(TodoSqls.DELETE_BY_COMPLETED, params);
 	}
+	
+	public Todo selectById(Integer id) {
+		Map<String,Object> params = new HashMap<>();
+		params.put("id", id);
+		return jdbc.queryForObject(TodoSqls.SELECT_BY_ID, params, rowMapper);
+	}
+	
 }
+
 
 
 

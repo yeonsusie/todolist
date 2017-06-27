@@ -66,22 +66,5 @@ public class TodoController {
  	}
 }
 
-
-
-/*
-@RestController
-@RequestMapping("/api/todos")
-public class TodoController {
-	
-	//service 연결 (spring의 DI(의존성주입) 기능)
-	private TodoService todoService;  
-
-	@Autowired
-	public TodoController(TodoService todoService) {
-		this.todoService = todoService;
-	}
-	
-	*/
-	
 	
 
