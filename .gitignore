@@ -9,3 +9,5 @@ _site/
 *.iml
 .metadata/
 RemoteSystemsTempFiles/
+fe/.project
+.recommenders/
